@@ -2,12 +2,12 @@
 <p>
 	<h2>EN:</h2>
 	Simple website for creating nameplates on table for occasions like wedding, birthdays...
-	<h3><a href="http://menovky.6f.sk" target="blank">menovky.6f.sk</a></h3>
+	<h3><a href="http://menovky.6f.sk" target="_blank">menovky.6f.sk</a></h3>
 </p>
 <p>
 	<h2>SK:</h2>
 	Jednoduchý web v PHP na vytvorenie menoviek na stôl pre príležitosti ako sú oslavy, svadby a pod.
-	<h3><a href="http://menovky.6f.sk" target="blank">menovky.6f.sk</a></h3>
+	<h3><a href="http://menovky.6f.sk" target="_blank">menovky.6f.sk</a></h3>
 </p>
 <p>
 <h2>Sample:</h2>
