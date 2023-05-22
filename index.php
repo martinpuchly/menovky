@@ -30,9 +30,6 @@ function saveCookies(){
 
 //SPRACOVANIE
 if(isset($_POST['submit'])){
-  print_r($_POST);
-  die();
-
     require_once __DIR__ . '/vendor/autoload.php';
     saveCookies();
 
