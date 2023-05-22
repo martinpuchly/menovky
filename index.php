@@ -12,14 +12,14 @@ function saveCookies(){
     $dbBG = $_POST['dbBG']=='on' ? true : false;
     $fontFamily = $_POST['fontFamily'] ? $_POST['fontFamily'] : '';
 
-    setcookie('names', $names);
-    setcookie('textColor', $textColor);
-    setcookie('bgColor', $bgColor);
-    setcookie('shColor', $shColor);
-    setcookie('image', $image);
-    setcookie('shon', $shon);
-    setcookie('dbBG', $dbBG);
-    setcookie('fontFamily', $fontFamily);
+    setcookie('names', $names, time() + (86400 * 30));
+    setcookie('textColor', $textColor, time() + (86400 * 30));
+    setcookie('bgColor', $bgColor, time() + (86400 * 30));
+    setcookie('shColor', $shColor, time() + (86400 * 30));
+    setcookie('image', $image, time() + (86400 * 30));
+    setcookie('shon', $shon, time() + (86400 * 30));
+    setcookie('dbBG', $dbBG, time() + (86400 * 30));
+    setcookie('fontFamily', $fontFamily, time() + (86400 * 30));
 
     return true;
 }
