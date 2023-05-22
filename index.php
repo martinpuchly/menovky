@@ -290,6 +290,12 @@ if(isset($_POST['submit'])){
                   <img src="./public/images/bg6_1.png" style="width: 150px ">
                 </label>
               </div>
+              <div class="col-2">
+                <label style="border:1px solid black;" for="image_bg7">
+                  <input type="radio" name="image" id="image_bg7" value="bg7_1.png" <?= isset($_COOKIE["image"]) && $_COOKIE["image"] == 'bg7_1.png' ? 'checked' : '' ?>>papier<br>
+                  <img src="./public/images/bg7_1.png" style="width: 150px ">
+                </label>
+              </div>
            </div>
             <div class="row form-group">
               <div class="col-1">
