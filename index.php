@@ -252,8 +252,8 @@ if(isset($_POST['submit'])){
                   <label class="font-weight-bold">Vzor:</label>
               </div>
               <div class="col-2">
-                <label style="border:1px solid black; width: 150px" for="image_bg1">
-                  <input type="radio" name="image" id="image_bg1" value="bg_empty.png" <?= isset($_COOKIE["image"]) && $_COOKIE["image"] == 'bg_empty.png' ? 'checked' : '' ?>>prázdne<br>
+                <label style="border:1px solid black; width: 150px" for="image_bg">
+                  <input type="radio" name="image" id="image_bg" value="bg_empty.png" <?= isset($_COOKIE["image"]) && $_COOKIE["image"] == 'bg_empty.png' ? 'checked' : '' ?>>prázdne<br>
                   <img src="./public/images/bg_empty.png" style="width: 150px ">
                 </label>
               </div>
