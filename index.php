@@ -241,7 +241,7 @@ if(isset($_POST['submit'])){
               </div>
              <div class="col-2">
                    <label for="shColor">Tieň písma: </label>
-                  <input type="color" id="shColor" name="shColor"  value="<?= isset($_COOKIE["bgColor"]) ? $_COOKIE["bgColor"] : '#808080' ?>" style="mt-3">
+                  <input type="color" id="shColor" name="shColor"  value="<?= isset($_COOKIE["shColor"]) ? $_COOKIE["shColor"] : '#808080' ?>" style="mt-3">
               </div>
            </div>
          <div class="row form-group">
