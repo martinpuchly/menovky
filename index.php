@@ -202,134 +202,134 @@ if(isset($_POST['submit'])){
       $mpdf->Output();            //VYGENEROVANIE .pdf
     }
 ?>
-  <!DOCTYPE html>
-    <html>
-    <head>
-    <meta charset="UTF-8">
-    <title>Menovky</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+     <!DOCTYPE html>
+      <html>
+      <head>
+      <meta charset="UTF-8">
+      <title>Menovky</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
-    </head>
-      <body>
-      <div class="container">
-          <h2>Menovky:</h2>
-        <form action="" method="POST" target="_blank" >
-          <div class="row mb-5">
-            <div class="col-2">
-                <label class="form-label">Mená:</label>
-                <br>
-                <small>delené ";" napr.: Jožko Mrkvička; Ferko Mrkvička;</small>
-            </div>
-            <div class="col-10">
-              <textarea name="names" class="form-control" style="height: 10em"><?= isset($_COOKIE["names"]) ? $_COOKIE["names"] : 'Jožko Mrkvička; Ferko Mrkvička; Aristoteles Unudený' ?></textarea>
-            </div>
-          </div>
-          <div class="row form-group mb-5">
-            <div class="col-2">
-                <label class="font-weight-bold">Farby:</label>
-            </div>
-            <div class="col-10">
-                  <div class="row">
-                      <div class="col-sm-3">
-                          <label for="textColor" class="form-label block">Písmo: </label>
-                          <input type="color" id="textColor" name="textColor"  value="<?= isset($_COOKIE["textColor"]) ? $_COOKIE["textColor"] : '#000000' ?>" style="mt-3">
-                      </div>
-                      <div class="col-sm-3">
-                          <label for="bgColor" class="form-label block">Pozadie: </label>
-                          <input type="color" id="bgColor" name="bgColor"  value="<?= isset($_COOKIE["bgColor"]) ? $_COOKIE["bgColor"] : '#ffffff' ?>" style="mt-3">
-                      </div>    
-                      <div class="col-sm-3">
-                          <label for="shColor" class="form-label block">Tieň písma: </label>
-                            <input type="color" id="shColor" name="shColor"  value="<?= isset($_COOKIE["shColor"]) ? $_COOKIE["shColor"] : '#808080' ?>" style="mt-3">
-                      </div>
-                  </div>
-                  
-            </div>
-          </div>
-        <div class="row form-group mb-5">
-            <div class="col-2">
-                <label class="form-label">Vzor:</label>
-            </div>
-            <div class="col-10">
-              <div class="row g-3">
-                <?php foreach($bg_nums as $bg_i=>$bg_v) { ?>
-                    <div class="col-md-3 fs-6" style="position:relative">
-                      <div class="form-check position-absolute" style="left:10% ;top: 1.5em">
-                            <input class="form-check-input" type="radio" name="image" id="image_bg<?= $bg_i ?>" value="bg<?= $bg_i ?>_1.png" <?= isset($_COOKIE["image"]) && $_COOKIE["image"] == 'bg<?= $bg_i ?>_1.png' ? 'checked' : '' ?>>
-                            <label class="form-check-label" for="image_bg<?= $bg_i ?>">
-                              <?= $bg_v ?>
-                            </label>
-                      </div>
-                      <img src="./public/images/bg<?= $bg_i ?>_1.png" class="img-fluid border border-secondary">
-                    </div>
-                <?php } ?>
+      </head>
+        <body>
+        <div class="container">
+            <h2>Menovky:</h2>
+          <form action="" method="POST" target="_blank" >
+            <div class="row mb-5">
+              <div class="col-2">
+                  <label class="form-label">Mená:</label>
+                  <br>
+                  <small>delené ";" napr.: Jožko Mrkvička; Ferko Mrkvička;</small>
+              </div>
+              <div class="col-10">
+                <textarea name="names" class="form-control" style="height: 10em"><?= isset($_COOKIE["names"]) ? $_COOKIE["names"] : 'Jožko Mrkvička; Ferko Mrkvička; Aristoteles Unudený' ?></textarea>
               </div>
             </div>
-          </div>
-          <div class="row form-group">
-            <div class="col-2">
-                <label class="form-label">Možnosti:</label>
-            </div>
-            <div class="col-sm-3">
-        
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="shon" name="shon" <?= isset($_COOKIE["shon"]) && $_COOKIE["shon"] == 1 ? 'checked' : '' ?>>
-                    <label class="form-check-label" for="shon">
-                      tieň písma
-                    </label>
-                  </div>
-            </div>
-            <div class="col-sm-3 mb-4">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="dbBG" name="dbBG" <?= isset($_COOKIE["dbBG"]) && $_COOKIE["dbBG"] == 1 ? 'checked' : '' ?>>
-                    <label class="form-check-label" for="dbBG">
-                      dvojstrané pozadie
-                    </label>
-                  </div>
-            </div>
-              <div class="col-sm-3">
-              <label  class="form-label">Písmo: </label><br/>
-
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="fontFamily" id="fontFamily_1" value="pacifico" <?= $_COOKIE["fontFamily"] && $_COOKIE["fontFamily"] == 'pacifico' ? 'checked' : '' ?>>
-                    <label class="form-check-label" for="fontFamily_1" style="font-family: pacifico">
-                      pacifico
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="fontFamily" id="fontFamily_2" value="parisienne" <?= $_COOKIE["fontFamily"] && $_COOKIE["fontFamily"] == 'parisienne' ? 'checked' : '' ?>>
-                    <label class="form-check-label" for="fontFamily_2" style="font-family: parisienne">
-                      parisienne
-                    </label>
-                  </div>  
-                  
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="fontFamily" id="fontFamily_3" value="dancingscript" <?= $_COOKIE["fontFamily"] && $_COOKIE["fontFamily"] == 'dancingscript' ? 'checked' : '' ?>>
-                    <label class="form-check-label" for="fontFamily_3" style="font-family: dancingscript">
-                      dancingscript
-                    </label>
-                  </div> 
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="fontFamily" id="fontFamily_4" value="symbola_hint" <?= $_COOKIE["fontFamily"] && $_COOKIE["fontFamily"] == 'symbola_hint' ? 'checked' : '' ?>>
-                    <label class="form-check-label" for="fontFamily_4" style="font-family: symbola_hint">
-                      symbola hint
-                    </label>
-                  </div> 
-                  
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="fontFamily" id="fontFamily_5" value="patrickhand" <?= $_COOKIE["fontFamily"] && $_COOKIE["fontFamily"] == 'patrickhand' ? 'checked' : '' ?>>
-                    <label class="form-check-label" for="fontFamily_5" style="font-family: patrickhand">
-                      patrickhand
-                    </label>
-                  </div> 
-            </div>
-          </div>
+            <div class="row form-group mb-5">
+              <div class="col-2">
+                  <label class="font-weight-bold">Farby:</label>
+              </div>
+              <div class="col-10">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label for="textColor" class="form-label block">Písmo: </label>
+                            <input type="color" id="textColor" name="textColor"  value="<?= isset($_COOKIE["textColor"]) ? $_COOKIE["textColor"] : '#000000' ?>" style="mt-3">
+                        </div>
+                        <div class="col-sm-3">
+                            <label for="bgColor" class="form-label block">Pozadie: </label>
+                            <input type="color" id="bgColor" name="bgColor"  value="<?= isset($_COOKIE["bgColor"]) ? $_COOKIE["bgColor"] : '#ffffff' ?>" style="mt-3">
+                        </div>    
+                        <div class="col-sm-3">
+                            <label for="shColor" class="form-label block">Tieň písma: </label>
+                              <input type="color" id="shColor" name="shColor"  value="<?= isset($_COOKIE["shColor"]) ? $_COOKIE["shColor"] : '#808080' ?>" style="mt-3">
+                        </div>
+                    </div>
+                   
+              </div>
+           </div>
+         <div class="row form-group mb-5">
+              <div class="col-2">
+                  <label class="form-label">Vzor:</label>
+              </div>
+              <div class="col-10">
+                <div class="row g-3">
+                  <?php foreach($bg_nums as $bg_i=>$bg_v) { ?>
+                      <div class="col-md-3 fs-6" style="position:relative">
+                        <div class="form-check border border-secondary" >
+                              <input class="form-check-input" type="radio" name="image" id="image_bg<?= $bg_i ?>" value="bg<?= $bg_i ?>_1.png" <?= isset($_COOKIE["image"]) && $_COOKIE["image"] == 'bg<?= $bg_i ?>_1.png' ? 'checked' : '' ?>>
+                              <label class="form-check-label" for="image_bg<?= $bg_i ?>">
+                                <?= $bg_v ?>
+                                <img src="./public/images/bg<?= $bg_i ?>_1.png" class="img-fluid">
+                              </label>
+                        </div>
+                      </div>
+                  <?php } ?>
+               </div>
+              </div>
+           </div>
             <div class="row form-group">
-            <div class="col-4"><button name="submit" class="btn btn-primary"> generovať </button>
-          </div>
-          </div>
-        </form>
+              <div class="col-2">
+                  <label class="form-label">Možnosti:</label>
+              </div>
+              <div class="col-sm-3">
+          
+                 <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="shon" name="shon" <?= isset($_COOKIE["shon"]) && $_COOKIE["shon"] == 1 ? 'checked' : '' ?>>
+                      <label class="form-check-label" for="shon">
+                        tieň písma
+                      </label>
+                    </div>
+              </div>
+              <div class="col-sm-3 mb-4">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="dbBG" name="dbBG" <?= isset($_COOKIE["dbBG"]) && $_COOKIE["dbBG"] == 1 ? 'checked' : '' ?>>
+                      <label class="form-check-label" for="dbBG">
+                        dvojstrané pozadie
+                      </label>
+                    </div>
+              </div>
+               <div class="col-sm-3">
+                <label  class="form-label">Písmo: </label><br/>
+
+                   <div class="form-check">
+                      <input class="form-check-input" type="radio" name="fontFamily" id="fontFamily_1" value="pacifico" <?= $_COOKIE["fontFamily"] && $_COOKIE["fontFamily"] == 'pacifico' ? 'checked' : '' ?>>
+                      <label class="form-check-label" for="fontFamily_1" style="font-family: pacifico">
+                        pacifico
+                      </label>
+                    </div>
+                   <div class="form-check">
+                      <input class="form-check-input" type="radio" name="fontFamily" id="fontFamily_2" value="parisienne" <?= $_COOKIE["fontFamily"] && $_COOKIE["fontFamily"] == 'parisienne' ? 'checked' : '' ?>>
+                      <label class="form-check-label" for="fontFamily_2" style="font-family: parisienne">
+                        parisienne
+                      </label>
+                    </div>  
+                    
+                   <div class="form-check">
+                      <input class="form-check-input" type="radio" name="fontFamily" id="fontFamily_3" value="dancingscript" <?= $_COOKIE["fontFamily"] && $_COOKIE["fontFamily"] == 'dancingscript' ? 'checked' : '' ?>>
+                      <label class="form-check-label" for="fontFamily_3" style="font-family: dancingscript">
+                        dancingscript
+                      </label>
+                    </div> 
+                   <div class="form-check">
+                      <input class="form-check-input" type="radio" name="fontFamily" id="fontFamily_4" value="symbola_hint" <?= $_COOKIE["fontFamily"] && $_COOKIE["fontFamily"] == 'symbola_hint' ? 'checked' : '' ?>>
+                      <label class="form-check-label" for="fontFamily_4" style="font-family: symbola_hint">
+                        symbola hint
+                      </label>
+                    </div> 
+                    
+                   <div class="form-check">
+                      <input class="form-check-input" type="radio" name="fontFamily" id="fontFamily_5" value="patrickhand" <?= $_COOKIE["fontFamily"] && $_COOKIE["fontFamily"] == 'patrickhand' ? 'checked' : '' ?>>
+                      <label class="form-check-label" for="fontFamily_5" style="font-family: patrickhand">
+                        patrickhand
+                      </label>
+                    </div> 
+              </div>
+           </div>
+              <div class="row form-group">
+              <div class="col-4"><button name="submit" class="btn btn-primary"> generovať </button>
+            </div>
+            </div>
+          </form>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
-    </body>
+      </body>
 </html>
