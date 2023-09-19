@@ -8,8 +8,8 @@ function saveCookies(){
     $bgColor = $_POST['bgColor'] ? $_POST['bgColor'] : '';
     $shColor = $_POST['shColor'] ? $_POST['shColor'] : '';
     $image = $_POST['image'] ? $_POST['image'] : '';
-    $shon = $_POST['shon']=='on' ? true : false;
-    $dbBG = $_POST['dbBG']=='on' ? true : false;
+    $shon = $_POST['shon'] ? true : false;
+    $dbBG = $_POST['dbBG'] ? true : false;
     $fontFamily = $_POST['fontFamily'] ? $_POST['fontFamily'] : '';
 
     setcookie('names', $names, time() + (86400 * 30));
@@ -24,7 +24,16 @@ function saveCookies(){
     return true;
 }
 
-
+$bg_nums = [
+        0 => "bez pozadia", 
+        1 => "ružové ruže najružovejšie",
+        2 => "ale fuj, zlatá",
+        3 => "kvetinky",
+        4 => "čierny nezmysel",
+        5 => "eukaliptus taký hustejši",
+        6 => "eukaliptus taký rozťahaný",
+        7 => "papier",
+    ];
 
 
 
@@ -202,7 +211,7 @@ if(isset($_POST['submit'])){
       $mpdf->Output();            //VYGENEROVANIE .pdf
     }
 ?>
-     <!DOCTYPE html>
+   <!DOCTYPE html>
       <html>
       <head>
       <meta charset="UTF-8">
