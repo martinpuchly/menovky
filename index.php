@@ -2,25 +2,29 @@
 session_start();
 error_reporting(0);
 
+
 function saveCookies(){
     $names = isset($_POST['names']) ? trim($_POST['names']) : '';
     $textColor = isset($_POST['textColor']) ? $_POST['textColor'] : '';
     $bgColor = isset($_POST['bgColor']) ? $_POST['bgColor'] : '';
     $shColor = isset($_POST['shColor']) ? $_POST['shColor'] : '';
-    
+
     $image = isset($_POST['image']) ? $_POST['image'] : '';
     $shon = isset($_POST['shon']) ? true : false;
     $dbBG = isset($_POST['dbBG']) ? true : false;
     $fontFamily = isset($_POST['fontFamily']) ? $_POST['fontFamily'] : '';
 
-    setcookie('names', $names, time() + (86400 * 30));
-    setcookie('textColor', $textColor, time() + (86400 * 30));
-    setcookie('bgColor', $bgColor, time() + (86400 * 30));
-    setcookie('shColor', $shColor, time() + (86400 * 30));
-    setcookie('image', $image, time() + (86400 * 30));
-    setcookie('shon', $shon, time() + (86400 * 30));
-    setcookie('dbBG', $dbBG, time() + (86400 * 30));
-    setcookie('fontFamily', $fontFamily, time() + (86400 * 30));
+    if(!isset($_POST["no_save_cookies"]))
+    {
+      setcookie('names', $names, time() + (86400 * 30));
+      setcookie('textColor', $textColor, time() + (86400 * 30));
+      setcookie('bgColor', $bgColor, time() + (86400 * 30));
+      setcookie('shColor', $shColor, time() + (86400 * 30));
+      setcookie('image', $image, time() + (86400 * 30));
+      setcookie('shon', $shon, time() + (86400 * 30));
+      setcookie('dbBG', $dbBG, time() + (86400 * 30));
+      setcookie('fontFamily', $fontFamily, time() + (86400 * 30));    
+    }
 
     return true;
 }
@@ -37,9 +41,22 @@ $bg_nums = [
     ];
 
 
+//VYMAZANIE COOKIES
+if(isset($_POST['delete_cookies']))
+{
+  setcookie("names", "", time() - 3600);
+  setcookie("textColor", "", time() - 3600);
+  setcookie("bgColor", "", time() - 3600);
+  setcookie("shColor", "", time() - 3600);
+  setcookie("image", "", time() - 3600);
+  setcookie("shon", "", time() - 3600);
+  setcookie("dbBG", "", time() - 3600);
+  setcookie("fontFamily", "", time() - 3600);
+}
 
 //SPRACOVANIE
-if(isset($_POST['submit'])){
+if(isset($_POST['submit']))
+{
     require_once __DIR__ . '/vendor/autoload.php';
     saveCookies();
 
@@ -223,7 +240,7 @@ if(isset($_POST['submit'])){
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
       </head>
-        <body>
+        <body class="mb-5">
         <div class="container">
             <h2>Menovky:</h2>
           <form action="" method="POST" target="_blank" >
@@ -337,11 +354,39 @@ if(isset($_POST['submit'])){
                     </div> 
               </div>
            </div>
-              <div class="row form-group">
-              <div class="col-4"><button name="submit" class="btn btn-primary"> generovať </button>
-            </div>
+              <div class="row justify-content-start">
+                <div class="col-2 mr-3">
+                  <button name="submit" class="btn btn-primary"> generovať </button>
+                </div>
+                 <div class="col-2">
+                    <label for="no_save_cookies">
+                      <input type="checkbox" name="no_save_cookies" <?= isset($_POST["no_save_cookies"]) ? 'checked' : ''  ?> id="no_save_cookies">
+                      neukladať cookies
+                    </label>
+                 </div>
             </div>
           </form>
+
+          <div class="card mt-5">
+            <div class="card-header bg-danger">
+              Ukladanie cookies
+            </div>
+            <div class="card-body">
+              <p class="card-text">
+                Pri generovaní menoviek stránka ukladá jednotlivé nastavenia, vrátane zoznamu mien.  Tieto nastavenie sa ukladajú do prehliadača na dobu 30 dní.
+              </p>
+              <p>
+                Ak si neželáte ukladať tito údaje, zrušte zaškrknutie políčka vedľa tlačítka generovať.
+              </p>
+              <p>
+                Ak si želátu uložené údaje vymazať, kliknite na tlačítko nižšie.
+                <form action="" method="POST">
+                  <button name="delete_cookies" class="btn btn-warning" onclick="if(!confirm('Chcete vymazať uložené údaje z prehliadača?')) { return false;}">vymazať uložené údaje</button>
+                </form> 
+              </p>
+            </div>
+          </div>
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
       </body>
