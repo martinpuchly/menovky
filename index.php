@@ -1,16 +1,17 @@
 <?php
 session_start();
-
+error_reporting(0);
 
 function saveCookies(){
-    $names = $_POST['names'] ? trim($_POST['names']) : '';
-    $textColor = $_POST['textColor'] ? $_POST['textColor'] : '';
-    $bgColor = $_POST['bgColor'] ? $_POST['bgColor'] : '';
-    $shColor = $_POST['shColor'] ? $_POST['shColor'] : '';
-    $image = $_POST['image'] ? $_POST['image'] : '';
-    $shon = $_POST['shon'] ? true : false;
-    $dbBG = $_POST['dbBG'] ? true : false;
-    $fontFamily = $_POST['fontFamily'] ? $_POST['fontFamily'] : '';
+    $names = isset($_POST['names']) ? trim($_POST['names']) : '';
+    $textColor = isset($_POST['textColor']) ? $_POST['textColor'] : '';
+    $bgColor = isset($_POST['bgColor']) ? $_POST['bgColor'] : '';
+    $shColor = isset($_POST['shColor']) ? $_POST['shColor'] : '';
+    
+    $image = isset($_POST['image']) ? $_POST['image'] : '';
+    $shon = isset($_POST['shon']) ? true : false;
+    $dbBG = isset($_POST['dbBG']) ? true : false;
+    $fontFamily = isset($_POST['fontFamily']) ? $_POST['fontFamily'] : '';
 
     setcookie('names', $names, time() + (86400 * 30));
     setcookie('textColor', $textColor, time() + (86400 * 30));
@@ -86,6 +87,9 @@ if(isset($_POST['submit'])){
       $shColor = $_POST['shColor'];
       if(isset($_POST['shon'])){
           $shadow = 'text-shadow: 1px 1px 5px '.$shColor.';';
+      }
+      else{
+         $shadow = '';
       }
 
       $posPoint = 262;        //PEVNÁ POZÍCIA V STREDE SPODNEJ ČASTI
@@ -300,33 +304,33 @@ if(isset($_POST['submit'])){
                 <label  class="form-label">Písmo: </label><br/>
 
                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="fontFamily" id="fontFamily_1" value="pacifico" <?= $_COOKIE["fontFamily"] && $_COOKIE["fontFamily"] == 'pacifico' ? 'checked' : '' ?>>
+                      <input class="form-check-input" type="radio" name="fontFamily" id="fontFamily_1" value="pacifico" <?= isset($_COOKIE["fontFamily"]) && $_COOKIE["fontFamily"] == 'pacifico' ? 'checked' : '' ?>>
                       <label class="form-check-label" for="fontFamily_1" style="font-family: pacifico">
                         pacifico
                       </label>
                     </div>
                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="fontFamily" id="fontFamily_2" value="parisienne" <?= $_COOKIE["fontFamily"] && $_COOKIE["fontFamily"] == 'parisienne' ? 'checked' : '' ?>>
+                      <input class="form-check-input" type="radio" name="fontFamily" id="fontFamily_2" value="parisienne" <?= isset($_COOKIE["fontFamily"]) && $_COOKIE["fontFamily"] == 'parisienne' ? 'checked' : '' ?>>
                       <label class="form-check-label" for="fontFamily_2" style="font-family: parisienne">
                         parisienne
                       </label>
                     </div>  
                     
                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="fontFamily" id="fontFamily_3" value="dancingscript" <?= $_COOKIE["fontFamily"] && $_COOKIE["fontFamily"] == 'dancingscript' ? 'checked' : '' ?>>
+                      <input class="form-check-input" type="radio" name="fontFamily" id="fontFamily_3" value="dancingscript" <?= isset($_COOKIE["fontFamily"]) && $_COOKIE["fontFamily"] == 'dancingscript' ? 'checked' : '' ?>>
                       <label class="form-check-label" for="fontFamily_3" style="font-family: dancingscript">
                         dancingscript
                       </label>
                     </div> 
                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="fontFamily" id="fontFamily_4" value="symbola_hint" <?= $_COOKIE["fontFamily"] && $_COOKIE["fontFamily"] == 'symbola_hint' ? 'checked' : '' ?>>
+                      <input class="form-check-input" type="radio" name="fontFamily" id="fontFamily_4" value="symbola_hint" <?= isset($_COOKIE["fontFamily"]) && $_COOKIE["fontFamily"] == 'symbola_hint' ? 'checked' : '' ?>>
                       <label class="form-check-label" for="fontFamily_4" style="font-family: symbola_hint">
                         symbola hint
                       </label>
                     </div> 
                     
                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="fontFamily" id="fontFamily_5" value="patrickhand" <?= $_COOKIE["fontFamily"] && $_COOKIE["fontFamily"] == 'patrickhand' ? 'checked' : '' ?>>
+                      <input class="form-check-input" type="radio" name="fontFamily" id="fontFamily_5" value="patrickhand" <?= isset($_COOKIE["fontFamily"]) && $_COOKIE["fontFamily"] == 'patrickhand' ? 'checked' : '' ?>>
                       <label class="form-check-label" for="fontFamily_5" style="font-family: patrickhand">
                         patrickhand
                       </label>
